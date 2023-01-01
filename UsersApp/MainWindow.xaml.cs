@@ -24,5 +24,48 @@ namespace UsersApp
         {
             InitializeComponent();
         }
+
+        private void Button_Reg_Click(object sender, RoutedEventArgs e)
+        {
+            string login = textBoxLogin.Text.Trim();
+            string pass = passBox_1.Password.Trim();
+            string passRepeat = passBox_2.Password.Trim();
+            string email = textBoxEmail.Text.Trim().ToLower();
+
+            if(login.Length < 5)
+            {
+                textBoxLogin.ToolTip = "Некорректный ввод";
+                textBoxLogin.Background = Brushes.DarkRed;
+            }
+            else if(pass.Length < 5)
+            {
+                passBox_1.ToolTip = "Некорректный ввод";
+                passBox_1.Background = Brushes.DarkRed;
+            }
+            else if(pass != passRepeat)
+            {
+                passBox_2.ToolTip = "Некорректный ввод";
+                passBox_2.Background = Brushes.DarkRed;
+            }
+            else if(email.Length < 5 || !email.Contains("@") || !email.Contains("."))
+            {
+                textBoxEmail.ToolTip = "Некорректный ввод";
+                textBoxEmail.Background = Brushes.DarkRed;
+            }
+            else
+            {
+                textBoxLogin.ToolTip = "";
+                textBoxLogin.Background = Brushes.Transparent;
+                passBox_1.ToolTip = "";
+                passBox_1.Background = Brushes.Transparent;
+                passBox_2.ToolTip = "";
+                passBox_2.Background = Brushes.Transparent;
+                textBoxEmail.ToolTip = "";
+                textBoxEmail.Background = Brushes.Transparent;
+
+                MessageBox.Show("Регистрация прошла успешно!");
+            }
+        }
+
     }
 }
