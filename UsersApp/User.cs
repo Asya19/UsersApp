@@ -8,10 +8,27 @@ namespace UsersApp
 {
     class User
     {
-        private int id { get; set; }
-        private string login { get; set; }
-        private string pass { get; set; }
-        private string email { get; set; }
+        public int id { get; set; }
+        private string login;
+        private string pass;
+        private string email;
+
+        public string Login
+        {
+            get { return login; }
+            set { login = value; }
+        }
+        public string Pass 
+        {
+            get { return pass; }
+            set { pass = value; }
+        }
+
+        public string Email
+        {
+            get { return email; }
+            set { email = value; }
+        }
 
         public User() { }
 

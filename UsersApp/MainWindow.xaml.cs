@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +21,19 @@ namespace UsersApp
     /// </summary>
     public partial class MainWindow : Window
     {
+        //ApplicationContext db;
         public MainWindow()
         {
             InitializeComponent();
+            //db = new ApplicationContext();
+            //db.Users.Load();
+
+            //List<User> users = db.Users.ToList();
+            //string str = "";
+            //foreach(User user in users)
+            //{
+            //    str += "Login" + user.Login + "|";
+            //}
         }
 
         private void Button_Reg_Click(object sender, RoutedEventArgs e)
@@ -32,7 +43,7 @@ namespace UsersApp
             string passRepeat = passBox_2.Password.Trim();
             string email = textBoxEmail.Text.Trim().ToLower();
 
-            if(login.Length < 5)
+            if(login.Length < 3)
             {
                 textBoxLogin.ToolTip = "Некорректный ввод";
                 textBoxLogin.Background = Brushes.DarkRed;
@@ -64,6 +75,11 @@ namespace UsersApp
                 textBoxEmail.Background = Brushes.Transparent;
 
                 MessageBox.Show("Регистрация прошла успешно!");
+
+                User user = new User(login, pass, email);
+
+                db.Users.Add(user);
+                db.SaveChanges();
             }
         }
 
