@@ -1,0 +1,9 @@
+Создание таблицы с полями в базе данных для SQLite:
+
+CREATE TABLE "Users" (
+	"id"	INTEGER NOT NULL UNIQUE,
+	"login"	TEXT NOT NULL,
+	"pass"	TEXT NOT NULL,
+	"email"	TEXT NOT NULL,
+	PRIMARY KEY("id" AUTOINCREMENT)
+);
